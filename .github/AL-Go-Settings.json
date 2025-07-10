@@ -19,8 +19,8 @@
       "e2e"
     ]
   },
-  "useCompilerFolder": true,
-  "doNotPublishApps": true,
+  "useCompilerFolder": false,
+  "doNotPublishApps": false,
   "AZURE_CREDENTIALSSecretName": "AZURE_CREDENTIALS",
   "useProjectDependencies": true,
   "trustedSigning": {
