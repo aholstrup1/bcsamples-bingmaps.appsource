@@ -56,6 +56,7 @@ codeunit 70074120 "BingMaps Geocode"
         BingMapsGeocode: Codeunit "BingMaps Geocode";
         CountryName: Text;
         Address: Text;
+        Address2: Text;
     begin
         CountryName := Customer."Country/Region Code";
         if Country.GET(CountryName) then
