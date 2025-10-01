@@ -163,7 +163,7 @@ jobs:
       - name: Process AL Code Analysis Logs
         id: ProcessALCodeAnalysisLogs
         if: (success() || failure())
-        uses: aholstrup1/AL-Go/Actions/ProcessALCodeAnalysisLogs@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/ProcessALCodeAnalysisLogs@main
         with:
           shell: pwsh
 
