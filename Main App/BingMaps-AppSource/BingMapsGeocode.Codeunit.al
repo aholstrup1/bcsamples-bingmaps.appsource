@@ -52,10 +52,10 @@ codeunit 70074120 "BingMaps Geocode"
 
     procedure GeocodeCustomer(Customer: Record Customer; var BingMapsCustomer: Record "BingMaps Customer"; var ErrorText: Text): Boolean
     var
+        Address: Text;
         Country: Record "Country/Region";
         BingMapsGeocode: Codeunit "BingMaps Geocode";
         CountryName: Text;
-        Address2: Text;
     begin
         CountryName := Customer."Country/Region Code";
         if Country.GET(CountryName) then
