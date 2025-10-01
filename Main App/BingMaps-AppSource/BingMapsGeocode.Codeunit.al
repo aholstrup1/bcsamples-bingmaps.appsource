@@ -59,7 +59,7 @@ codeunit 70074120 "BingMaps Geocode"
     begin
         CountryName := Customer."Country/Region Code";
         if Country.GET(CountryName) then
-            CountryName := Country.Name;
+            CountryName:=Country.Name;
         Address := Customer.Address + ' ' + Customer."Address 2" + ' ' + Customer.City + ' ' + CountryName;
         if BingMapsCustomer.Address <> Address then begin
             BingMapsCustomer.Geocoded := 0;
