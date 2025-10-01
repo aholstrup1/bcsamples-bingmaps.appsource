@@ -17,13 +17,7 @@
   },
   "useCompilerFolder": true,
   "doNotPublishApps": true,
-  "AZURE_CREDENTIALSSecretName": "AZURE_CREDENTIALS",
   "useProjectDependencies": true,
-  "trustedSigning": {
-    "Endpoint": "https://neu.codesigning.azure.net",
-    "Account": "BCCodeSigningTest",
-    "CertificateProfile": "BCCodeSigningPublic"
-  },
   "trackALAlertsInGitHub": true,
   "templateSha": "a4e56bd98d35145c0dd5d6ade5aaefa62b613963"
 }
