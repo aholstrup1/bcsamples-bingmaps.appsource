@@ -43,7 +43,7 @@ codeunit 70074120 "BingMaps Geocode"
     begin
         if not BingMapsCustomer.Get(Customer."No.") then begin
             BingMapsCustomer.Init();
-            BingMapsCustomer."No." := Customer."No.";
+            BingMapsCustomer."No.":=Customer."No.";
             BingMapsCustomer.Insert();
         end;
         GeocodeCustomer(Customer, BingMapsCustomer, ErrorText);
