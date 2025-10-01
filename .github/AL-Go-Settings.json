@@ -19,5 +19,6 @@
   "doNotPublishApps": true,
   "useProjectDependencies": true,
   "trackALAlertsInGitHub": true,
+  "enableCodeCop": true,
   "templateSha": "a4e56bd98d35145c0dd5d6ade5aaefa62b613963"
 }
