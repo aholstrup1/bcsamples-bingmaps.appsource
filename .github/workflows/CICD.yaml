@@ -50,7 +50,7 @@ jobs:
       trackALAlertsInGitHub: ${{ steps.SetALCodeAnalysisVar.outputs.trackALAlertsInGitHub }}
     steps:
       - name: Dump Workflow Information
-        uses: aholstrup1/AL-Go/Actions/DumpWorkflowInfo@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/DumpWorkflowInfo@main
         with:
           shell: pwsh
 
@@ -61,13 +61,13 @@ jobs:
 
       - name: Initialize the workflow
         id: init
-        uses: aholstrup1/AL-Go/Actions/WorkflowInitialize@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/WorkflowInitialize@main
         with:
           shell: pwsh
 
       - name: Read settings
         id: ReadSettings
-        uses: aholstrup1/AL-Go/Actions/ReadSettings@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/ReadSettings@main
         with:
           shell: pwsh
           get: type,powerPlatformSolutionFolder,useGitSubmodules,trackALAlertsInGitHub
@@ -81,7 +81,7 @@ jobs:
       - name: Read submodules token
         id: ReadSubmodulesToken
         if: env.useGitSubmodules != 'false' && env.useGitSubmodules != ''
-        uses: aholstrup1/AL-Go/Actions/ReadSecrets@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/ReadSecrets@main
         with:
           shell: pwsh
           gitHubSecrets: ${{ toJson(secrets) }}
@@ -102,7 +102,7 @@ jobs:
 
       - name: Determine Projects To Build
         id: determineProjectsToBuild
-        uses: aholstrup1/AL-Go/Actions/DetermineProjectsToBuild@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/DetermineProjectsToBuild@main
         with:
           shell: pwsh
           maxBuildDepth: ${{ env.workflowDepth }}
@@ -115,7 +115,7 @@ jobs:
 
       - name: Determine Delivery Target Secrets
         id: DetermineDeliveryTargetSecrets
-        uses: aholstrup1/AL-Go/Actions/DetermineDeliveryTargets@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/DetermineDeliveryTargets@main
         with:
           shell: pwsh
           projectsJson: '${{ steps.determineProjectsToBuild.outputs.ProjectsJson }}'
@@ -123,7 +123,7 @@ jobs:
 
       - name: Read secrets
         id: ReadSecrets
-        uses: aholstrup1/AL-Go/Actions/ReadSecrets@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/ReadSecrets@main
         with:
           shell: pwsh
           gitHubSecrets: ${{ toJson(secrets) }}
@@ -131,7 +131,7 @@ jobs:
 
       - name: Determine Delivery Targets
         id: DetermineDeliveryTargets
-        uses: aholstrup1/AL-Go/Actions/DetermineDeliveryTargets@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/DetermineDeliveryTargets@main
         env:
           Secrets: '${{ steps.ReadSecrets.outputs.Secrets }}'
         with:
@@ -141,7 +141,7 @@ jobs:
 
       - name: Determine Deployment Environments
         id: DetermineDeploymentEnvironments
-        uses: aholstrup1/AL-Go/Actions/DetermineDeploymentEnvironments@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/DetermineDeploymentEnvironments@main
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
@@ -157,21 +157,21 @@ jobs:
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
       - name: Read settings
-        uses: aholstrup1/AL-Go/Actions/ReadSettings@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/ReadSettings@main
         with:
           shell: pwsh
           get: templateUrl
 
       - name: Read secrets
         id: ReadSecrets
-        uses: aholstrup1/AL-Go/Actions/ReadSecrets@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/ReadSecrets@main
         with:
           shell: pwsh
           gitHubSecrets: ${{ toJson(secrets) }}
           getSecrets: 'ghTokenWorkflow'
 
       - name: Check for updates to AL-Go system files
-        uses: aholstrup1/AL-Go/Actions/CheckForUpdates@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/CheckForUpdates@main
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
@@ -284,7 +284,7 @@ jobs:
           path: '.artifacts'
 
       - name: Read settings
-        uses: aholstrup1/AL-Go/Actions/ReadSettings@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/ReadSettings@main
         with:
           shell: pwsh
 
@@ -293,7 +293,7 @@ jobs:
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
 
       - name: Build Reference Documentation
-        uses: aholstrup1/AL-Go/Actions/BuildReferenceDocumentation@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/BuildReferenceDocumentation@main
         with:
           shell: pwsh
           artifacts: '.artifacts'
@@ -333,7 +333,7 @@ jobs:
           path: '.artifacts'
 
       - name: Read settings
-        uses: aholstrup1/AL-Go/Actions/ReadSettings@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/ReadSettings@main
         with:
           shell: ${{ matrix.shell }}
           get: type,powerPlatformSolutionFolder
@@ -347,7 +347,7 @@ jobs:
 
       - name: Read secrets
         id: ReadSecrets
-        uses: aholstrup1/AL-Go/Actions/ReadSecrets@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/ReadSecrets@main
         with:
           shell: ${{ matrix.shell }}
           gitHubSecrets: ${{ toJson(secrets) }}
@@ -355,7 +355,7 @@ jobs:
 
       - name: Deploy to Business Central
         id: Deploy
-        uses: aholstrup1/AL-Go/Actions/Deploy@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/Deploy@main
         env:
           Secrets: '${{ steps.ReadSecrets.outputs.Secrets }}'
         with:
@@ -367,7 +367,7 @@ jobs:
 
       - name: Deploy to Power Platform
         if: env.type == 'PTE' && env.powerPlatformSolutionFolder != ''
-        uses: aholstrup1/AL-Go/Actions/DeployPowerPlatform@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/DeployPowerPlatform@main
         env:
           Secrets: '${{ steps.ReadSecrets.outputs.Secrets }}'
         with:
@@ -395,20 +395,20 @@ jobs:
           path: '.artifacts'
 
       - name: Read settings
-        uses: aholstrup1/AL-Go/Actions/ReadSettings@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/ReadSettings@main
         with:
           shell: pwsh
 
       - name: Read secrets
         id: ReadSecrets
-        uses: aholstrup1/AL-Go/Actions/ReadSecrets@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/ReadSecrets@main
         with:
           shell: pwsh
           gitHubSecrets: ${{ toJson(secrets) }}
           getSecrets: '${{ matrix.deliveryTarget }}Context'
 
       - name: Deliver
-        uses: aholstrup1/AL-Go/Actions/Deliver@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/Deliver@main
         env:
           Secrets: '${{ steps.ReadSecrets.outputs.Secrets }}'
         with:
@@ -428,7 +428,7 @@ jobs:
 
       - name: Finalize the workflow
         id: PostProcess
-        uses: aholstrup1/AL-Go/Actions/WorkflowPostProcess@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/WorkflowPostProcess@main
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
