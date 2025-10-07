@@ -1,7 +1,7 @@
 {
-  "$schema": "https://raw.githubusercontent.com/aholstrup1/AL-Go/main/Actions/.Modules/settings.schema.json",
+  "$schema": "https://raw.githubusercontent.com/aholstrup1/AL-Go/aholstrup/codeanalysis_defensivecheck/Actions/.Modules/settings.schema.json",
   "type": "AppSource App",
-  "templateUrl": "https://github.com/aholstrup1/AL-Go@main",
+  "templateUrl": "https://github.com/aholstrup1/AL-Go@aholstrup/codeanalysis_defensivecheck",
   "runs-on": "ubuntu-latest",
   "unusedALGoSystemFiles": [
     "AddExistingAppOrTestApp.yaml",
@@ -20,7 +20,7 @@
   "useProjectDependencies": true,
   "trackALAlertsInGitHub": true,
   "enableCodeCop": true,
-  "templateSha": "1ea1489a510284d505e82d4f2ffe75038a2e6aec",
+  "templateSha": "a7b68da00170e4a17a6581552b48f1c088f25897",
   "commitOptions": {
     "messageSuffix": "[skip ci]",
     "createPullRequest": false
