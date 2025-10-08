@@ -3,7 +3,6 @@
   "type": "AppSource App",
   "templateUrl": "https://github.com/aholstrup1/AL-Go@aholstrup/codeanalysis_defensivecheck",
   "runs-on": "ubuntu-latest",
-  "githubRunner": "ubuntu-latest",
   "unusedALGoSystemFiles": [
     "AddExistingAppOrTestApp.yaml",
     "CreateApp.yaml",
