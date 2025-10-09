@@ -233,7 +233,7 @@ jobs:
   CodeAnalysisUpload:
     needs: [ Initialization, Build ]
     if: (!cancelled()) && (needs.Initialization.outputs.trackALAlertsInGitHub == 'True')
-    runs-on: [ ubuntu-latest ]
+    runs-on: [ windows-latest ]
     name: Code Analysis Processing
     steps:
       - name: Checkout
@@ -252,7 +252,7 @@ jobs:
         if: (success() || failure())
         uses: aholstrup1/AL-Go/Actions/ProcessALCodeAnalysisLogs@aholstrup/codeanalysis_defensivecheck
         with:
-          shell: pwsh
+          shell: powershell
 
       - name: Upload SARIF file to GitHub
         uses: github/codeql-action/upload-sarif@v3
