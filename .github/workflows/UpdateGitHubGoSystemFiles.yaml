@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       templateUrl:
-        description: Template Repository URL (current is https://github.com/aholstrup1/AL-Go@aholstrup/codeanalysis_defensivecheck)
+        description: Template Repository URL (current is https://github.com/aholstrup1/AL-Go@main)
         required: false
         default: ''
       downloadLatest:
@@ -46,14 +46,14 @@ jobs:
 
       - name: Read settings
         id: ReadSettings
-        uses: aholstrup1/AL-Go/Actions/ReadSettings@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/ReadSettings@main
         with:
           shell: pwsh
           get: templateUrl
 
       - name: Get Workflow Multi-Run Branches
         id: GetBranches
-        uses: aholstrup1/AL-Go/Actions/GetWorkflowMultiRunBranches@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/GetWorkflowMultiRunBranches@main
         with:
           shell: pwsh
           includeBranches: ${{ github.event.inputs.includeBranches }}
@@ -82,7 +82,7 @@ jobs:
 
     steps:
       - name: Dump Workflow Information
-        uses: aholstrup1/AL-Go/Actions/DumpWorkflowInfo@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/DumpWorkflowInfo@main
         with:
           shell: pwsh
 
@@ -93,19 +93,19 @@ jobs:
 
       - name: Initialize the workflow
         id: init
-        uses: aholstrup1/AL-Go/Actions/WorkflowInitialize@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/WorkflowInitialize@main
         with:
           shell: pwsh
 
       - name: Read settings
-        uses: aholstrup1/AL-Go/Actions/ReadSettings@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/ReadSettings@main
         with:
           shell: pwsh
           get: commitOptions
 
       - name: Read secrets
         id: ReadSecrets
-        uses: aholstrup1/AL-Go/Actions/ReadSecrets@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/ReadSecrets@main
         with:
           shell: pwsh
           gitHubSecrets: ${{ toJson(secrets) }}
@@ -132,7 +132,7 @@ jobs:
           Add-Content -Encoding UTF8 -Path $env:GITHUB_ENV -Value "downloadLatest=$downloadLatest"
 
       - name: Update AL-Go system files
-        uses: aholstrup1/AL-Go/Actions/CheckForUpdates@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/CheckForUpdates@main
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
@@ -146,7 +146,7 @@ jobs:
 
       - name: Finalize the workflow
         if: always()
-        uses: aholstrup1/AL-Go/Actions/WorkflowPostProcess@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/WorkflowPostProcess@main
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
