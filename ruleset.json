@@ -1,0 +1,12 @@
+{
+  "name": "Ruleset for shipped apps",
+  "description": "This ruleset applies to shipped apps.",
+  "generalAction": "Info",
+  "rules": [
+    {
+      "id": "AA0001",
+      "action": "Info",
+      "justification": "Testing"
+    }
+  ]
+}
