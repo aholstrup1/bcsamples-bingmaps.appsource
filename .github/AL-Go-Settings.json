@@ -24,5 +24,6 @@
   "commitOptions": {
     "messageSuffix": "[skip ci]",
     "createPullRequest": false
-  }
+  },
+  "rulesetFile": "../ruleset.json"
 }
