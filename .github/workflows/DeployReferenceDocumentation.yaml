@@ -30,18 +30,24 @@ jobs:
 
       - name: Initialize the workflow
         id: init
-        uses: aholstrup1/AL-Go/Actions/WorkflowInitialize@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/WorkflowInitialize@main
         with:
           shell: pwsh
 
       - name: Read settings
-        uses: aholstrup1/AL-Go/Actions/ReadSettings@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/ReadSettings@main
+        with:
+          shell: pwsh
+
+      - name: Determine ArtifactUrl
+        id: determineArtifactUrl
+        uses: aholstrup1/AL-Go/Actions/DetermineArtifactUrl@main
         with:
           shell: pwsh
 
       - name: Determine Deployment Environments
         id: DetermineDeploymentEnvironments
-        uses: aholstrup1/AL-Go/Actions/DetermineDeploymentEnvironments@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/DetermineDeploymentEnvironments@main
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
@@ -54,10 +60,11 @@ jobs:
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
 
       - name: Build Reference Documentation
-        uses: aholstrup1/AL-Go/Actions/BuildReferenceDocumentation@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/BuildReferenceDocumentation@main
         with:
           shell: pwsh
           artifacts: 'latest'
+          artifactUrl: ${{ env.artifact }}
 
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
@@ -71,7 +78,7 @@ jobs:
 
       - name: Finalize the workflow
         if: always()
-        uses: aholstrup1/AL-Go/Actions/WorkflowPostProcess@aholstrup/codeanalysis_defensivecheck
+        uses: aholstrup1/AL-Go/Actions/WorkflowPostProcess@main
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
