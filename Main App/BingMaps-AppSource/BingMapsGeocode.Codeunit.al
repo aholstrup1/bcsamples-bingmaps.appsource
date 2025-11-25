@@ -43,7 +43,7 @@ codeunit 70074120 "BingMaps Geocode"
     begin
         if not BingMapsCustomer.Get(Customer."No.") then begin
             BingMapsCustomer.Init();
-            BingMapsCustomer."No." := Customer."No.";
+            BingMapsCustomer."No.":=Customer."No.";
             BingMapsCustomer.Insert();
         end;
         GeocodeCustomer(Customer, BingMapsCustomer, ErrorText);
@@ -52,10 +52,10 @@ codeunit 70074120 "BingMaps Geocode"
 
     procedure GeocodeCustomer(Customer: Record Customer; var BingMapsCustomer: Record "BingMaps Customer"; var ErrorText: Text): Boolean
     var
+        Address: Text;
         Country: Record "Country/Region";
         BingMapsGeocode: Codeunit "BingMaps Geocode";
         CountryName: Text;
-        Address: Text;
     begin
         CountryName := Customer."Country/Region Code";
         if Country.GET(CountryName) then
