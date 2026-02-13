@@ -4,7 +4,7 @@
   "VersioningStrategy": 16,
   "CodeSignCertificateUrlSecretName": "CodeSignCertificateUrl",
   "CodeSignCertificatePasswordSecretName": "CodeSignCertificatePassword",
-  "appSourceCopMandatoryAffixes": [
+  "appSourceCopMandatoryAffixes": [ 
     "BIN"
   ],
   "deliverToAppSource": {
